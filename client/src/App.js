@@ -16,7 +16,16 @@ function App() {
       user_Id:user_Id,
       complaintStatus:complaintStatus
 
-    }).then(()=>{alert("complaint added successfully")})
+    })
+      
+      setcomplaintList([
+      ...complaintList,
+      {complaintId:complaintId,
+      complaintDescription:complaintDescription,
+      user_Id:user_Id,
+      complaintStatus:complaintStatus},
+    ]);
+  
 
   }
 
@@ -38,25 +47,25 @@ function App() {
         CRUD
       </h4>
 <div className="form">
-<label>complaintId</label>
+<label>Complaint ID</label>
 <input 
 type="text" 
 name="name" 
 onChange={(e)=>{setcomplaintId(e.target.value);} }/>
 
-<label>complaint Description</label>
+<label>Complaint Description</label>
 <input type="text"
 name="complaintDescription"
 onChange={(e)=>{setComplaintDescription(e.target.value);} }/>
 
 
-<label>User Id</label>
+<label>User ID</label>
 <input 
 type="text" 
 name="name" 
 onChange={(e)=>{setuser_Id(e.target.value);} }/>
 
-<label>complaintStatus</label>
+<label>Complaint Status</label>
 <input 
 type="text" 
 name="name" 
