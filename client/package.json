@@ -1,0 +1,66 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "cra-template": "1.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.2.2",
+    "axios": "^0.21.0",
+    "react-router-dom": "^5.2.0",
+    "react-spring": "^8.0.27",
+    "@reduxjs/toolkit": "^1.5.0",
+    "@zoomus/websdk": "^1.8.5",
+    "bootstrap": "^4.5.3",
+    "cors": "^2.8.5",
+    "firebase": "^8.2.1",
+    "framer-motion": "^3.1.4",
+    "jquery": "^3.5.1",
+    "mdbootstrap": "^4.19.2",
+    "mdbreact": "^5.0.1",
+    "proxy": "^1.0.2",
+    "react-bootstrap": "^1.4.0",
+    "react-bootstrap-date-picker": "^5.1.0",
+    "react-datepicker": "^3.3.0",
+    "react-file-base64": "^1.0.3",
+    "react-icons": "^4.1.0",
+    "react-notifications": "^1.7.2",
+    "react-redux": "^7.2.2",
+    "react-simple-timefield": "^1.3.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "simple-peer": "^9.9.3",
+    "socket.io": "^3.0.4",
+    "socket.io-client": "^3.0.4",
+    "styled-components": "^5.2.1",
+    "sweetalert": "^2.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
