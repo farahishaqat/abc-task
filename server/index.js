@@ -1,17 +1,17 @@
-const express =require('express');
-const bodyParser=require('body-parser')
-const cors= require('cors')
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
 
-const mysql =require('mysql');
+const mysql = require("mysql");
 
-const db=mysql.createPool({
-    host:'us-cdbr-east-03.cleardb.com',
-    user:'b122385535251b',
-    password:'eea18bb3',
-    database:'heroku_5bcb5d7d38aaa3e'
-})
+const db = mysql.createPool({
+  host: "us-cdbr-east-03.cleardb.com",
+  user: "b122385535251b",
+  password: "eea18bb3",
+  database: "heroku_5bcb5d7d38aaa3e",
+});
 
 // app.get("/",(req,res)=>{
 
@@ -21,37 +21,64 @@ const db=mysql.createPool({
 // })
 // });
 app.use(cors());
-app.use(express.json())
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //post complaints to the database
-app.post("/api/insert",(req,res)=>{
-    
-    const complaintId=req.body.complaintId
-    const complaintDescription=req.body.complaintDescription
-    const user_Id=req.body.user_Id
-    const complaintStatus=req.body.complaintStatus
-    
-    const sqlInsert="INSERT INTO complaints (complaintId,complaintDescription,user_Id,complaintStatus) VALUES(?,?,?,?)"
-    db.query(sqlInsert,[complaintId,complaintDescription,user_Id,complaintStatus],(err,result)=>{
-// console.log(result)
-    })
-});
+app.post("/api/insert", (req, res) => {
+  const complaintId = req.body.complaintId;
+  const complaintDescription = req.body.complaintDescription;
+  const user_Id = req.body.user_Id;
+  const complaintStatus = req.body.complaintStatus;
 
+  const sqlInsert =
+    "INSERT INTO complaints (complaintId,complaintDescription,user_Id,complaintStatus) VALUES(?,?,?,?)";
+  db.query(
+    sqlInsert,
+    [complaintId, complaintDescription, user_Id, complaintStatus],
+    (err, result) => {
+      // console.log(result)
+    }
+  );
+});
 
 //get all complaints from Database
 
-app.get("/api/get",(req,res)=>{
-   
-    const sqlSelect ="SELECT * FROM complaints";
-    db.query(sqlSelect,(err,result)=>{
-// console.log(result)
-res.send(result)
-    })
-})
+app.get("/api/get", (req, res) => {
+  const sqlSelect = "SELECT * FROM complaints";
+  db.query(sqlSelect, (err, result) => {
+    // console.log(result)
+    res.send(result);
+  });
+});
 
+//delete complaint
+app.delete("/api/delete/:complaintId", (req, res) => {
+  const complaintId = req.params.complaintId;
+  const sqlDelete = "DELETE FROM complaints WHERE complaintId=?";
+  db.query(sqlDelete, complaintId, (err, result) => {
+    if (err) console.log(err);
+  });
+});
 
+//update complaint
+app.put("/api/update", (req, res) => {
+  const complaintId = req.body.complaintId;
+  const complaintDescription = req.body.complaintDescription;
+  const user_Id = req.body.user_Id;
+  const complaintStatus = req.body.complaintStatus;
 
-app.listen(3001,()=>{
-    console.log("running on port 3001")
-})
+  const sqlUpdate =
+    "UPDATE complaints SET complaintDescription=? WHERE complaintId=? user_Id=? complaintStatus=?)";
+  db.query(
+    sqlUpdate,
+    [complaintId, complaintDescription, user_Id, complaintStatus],
+    (err, result) => {
+      if (err) console.log(err);
+    }
+  );
+});
+
+app.listen(3001, () => {
+  console.log("running on port 3001");
+});
