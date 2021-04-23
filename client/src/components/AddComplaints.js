@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "../App.css";
 import axios from "axios";
+// import Footer from "./Footer";
 
 function AddComplaints() {
   //post data to the database
@@ -58,15 +59,19 @@ function AddComplaints() {
   //   };
 
   return (
-    <div className="App">
+    <div>
       <div
         className="container w-50 p-3 mt-5"
         style={{ backgroundColor: "#E3F2FD", borderRadius: "20px" }}
       >
+        <br />
         <form className="form-group mr-5 ml-5">
+          <h2>Complaint Form</h2>
+          <br />
           <div className="form group">
             <label>Complaint ID</label>
             <input
+              className="complaintInput"
               type="text"
               name="name"
               onChange={(e) => {
@@ -76,6 +81,7 @@ function AddComplaints() {
 
             <label>Complaint Description</label>
             <input
+              className="complaintInput"
               type="text"
               name="complaintDescription"
               onChange={(e) => {
@@ -85,6 +91,7 @@ function AddComplaints() {
 
             <label>User ID</label>
             <input
+              className="complaintInput"
               type="text"
               name="name"
               onChange={(e) => {
@@ -94,58 +101,80 @@ function AddComplaints() {
 
             <label>Complaint Status</label>
             <input
+              className="complaintInput"
               type="text"
               name="name"
               onChange={(e) => {
                 setcomplaintStatus(e.target.value);
               }}
             />
-
+            <br />
+            <br />
             <button onClick={submitComplaint}> Submit</button>
           </div>
           <br />
-          <h5> All Complaints</h5>
-
-          {complaintList.map((val) => {
-            return (
-              <div className="card">
-                {" "}
-                <br /> Id:{val.complaintId}
-                <br />
-                Description:
-                {val.complaintDescription}
-                <br />
-                user_Id:{val.user_Id}
-                Status:{val.complaintStatus}
-                <br />
-                <button
-                  onClick={() => {
-                    deleteComplaint(val.complaintId);
-                  }}
-                >
-                  {" "}
-                  Delete
-                </button>
-                <input
-                  type="text"
-                  id="updateInput"
-                  // onChange={(e) => {
-                  //   setNewComplaintDescription(e.target.value);
+          <div
+            style={{
+              marginTop: "50px",
+              marginBottom: "50px",
+              borderTop: "2px solid grey",
+            }}
+            className="allComplaints"
+          >
+            {" "}
+            <br />
+            <h5> All Complaints</h5>
+            <div>
+              {complaintList.map((val) => {
+                return (
+                  <div
+                    style={{
+                      borderBottom: "2px solid grey",
+                    }}
+                  >
+                    {" "}
+                    <br /> Id:{val.complaintId}
+                    <br />
+                    Description:
+                    {val.complaintDescription}
+                    <br />
+                    user_Id:{val.user_Id}
+                    Status:{val.complaintStatus}
+                    <br />
+                    <br />
+                    <button
+                      style={{ marginTop: "10px", marginBottom: "40px" }}
+                      onClick={() => {
+                        deleteComplaint(val.complaintId);
+                      }}
+                    >
+                      {" "}
+                      Delete
+                    </button>
+                    {/* <input
+                    type="text"
+                    id="updateInput"
+                    // onChange={(e) => {
+                    //   setNewComplaintDescription(e.target.value);
+                    // }}
+                  ></input> */}
+                    {/* <button
+                  // onClick={() => {
+                  //   {
+                  //     updateComplaint(val.complaintDescription);
+                  //   }
                   // }}
-                ></input>
-                <button
-                // onClick={() => {
-                //   {
-                //     updateComplaint(val.complaintDescription);
-                //   }
-                // }}
-                >
-                  {" "}
-                  Update
-                </button>
-              </div>
-            );
-          })}
+                  >
+                    {" "}
+                    Update
+                  </button> */}
+                  </div>
+                );
+              })}
+            </div>
+            <br />
+            <br />
+          </div>{" "}
         </form>
       </div>
     </div>

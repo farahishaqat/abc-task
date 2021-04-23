@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import AddComplaints from "./components/AddComplaints";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -22,6 +23,11 @@ function App() {
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
         </Switch>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Footer />
       </div>
     </Router>
   );

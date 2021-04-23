@@ -11,7 +11,7 @@ body{
     padding: 0;
 }
 
-/* 
+
 .form{
     display: flex;
     flex-direction: column;
@@ -19,20 +19,29 @@ body{
     justify-content: center;
 }
 
-.form input{
+
+/* .form input{
     width: 200px;
     height: 20px;
     margin: 10px;
     font-size:25 px ;
-} */
+}  */
 
-/* .card{
-    width: 700px;
+.card{
+    width: auto;
     height: auto;
-    border: 2px solid black;
-    border-radius: 15px;
-    margin:10px 
-} */
+    background-color:#E3F2FD ;
+   
+}
+
+.all-Complaints{
+
+        width: auto;
+        height: auto;
+        background-color:#E3F2FD ;
+       
+
+}
 
 /* NAVBARR CSS */
 .Navbar{
@@ -71,3 +80,14 @@ body{
 .Navbar .rightSide{
     flex:50%;
 }
+
+/* complaint form */
+
+input{ background-color: white
+    ;
+opacity:.3;
+border-radius: 10px;
+width: auto;
+height: 30;}
+
+button{border-radius: 10px;}

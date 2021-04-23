@@ -3,12 +3,10 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { GiAges } from "react-icons/gi";
 import { BsLockFill } from "react-icons/bs";
-import { CgGenderFemale } from "react-icons/cg";
-import { CgGenderMale } from "react-icons/cg";
 
 function Signup() {
   return (
-    <di>
+    <div>
       <div
         className="container w-50 p-3 mt-5"
         style={{ backgroundColor: "#E3F2FD", borderRadius: "20px" }}
@@ -33,14 +31,7 @@ function Signup() {
             <GiAges size={20} />
             <input placeholder="age" type="text" name="age" required />
           </div>
-          <div style={{ color: "#E65100" }}></div>
-          <br></br>
-          <div className="form-group">
-            <CgGenderFemale size={20} style={{ marginRight: "0" }} />{" "}
-            <CgGenderMale size={20} style={{ marginLeft: "0" }} />
-            <input placeholder="gender" type="text" name="gender" required />
-          </div>
-          <div style={{ color: "#E65100" }}></div>
+
           <br></br>
           <div className="form-group">
             <BsFillEnvelopeFill size={20} />
@@ -70,7 +61,7 @@ function Signup() {
           {/* button div ends */}
         </form>
       </div>
-    </di>
+    </div>
   );
 }
 export default Signup;
