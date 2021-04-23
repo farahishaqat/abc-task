@@ -13,13 +13,18 @@ const db = mysql.createPool({
   database: "heroku_5bcb5d7d38aaa3e",
 });
 
-// app.get("/",(req,res)=>{
+db.query("select 1 + 1", (err, rows) => {
+  if (err) throw err;
+  console.log(" database Connected! , hello");
+});
 
+// app.get("/",(req,res)=>{
 //     const sqlInsert ="INSERT INTO complaints (complaintId,complaintDescription,user_Id,complaintStatus) VALUES('11','so mad about the customer service','234','resolved')"
 // db.query(sqlInsert,(err,result)=>{
 //     res.send("hello farah")
 // })
 // });
+
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
