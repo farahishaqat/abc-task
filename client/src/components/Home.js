@@ -6,12 +6,11 @@ const Home = () => {
   return (
     <div>
       <div>
-        {/* Carousel begins */}
         <Carousel style={{ width: "100%" }}>
           <Carousel.Item>
             {" "}
             <img
-              style={{ width: 1100, height: 500 }}
+              style={{ width: 1000, height: 500 }}
               src={process.env.PUBLIC_URL + "./Images/one.jpeg"}
               alt="not found"
             ></img>
@@ -20,7 +19,7 @@ const Home = () => {
           <Carousel.Item>
             {" "}
             <img
-              style={{ width: 1100, height: 500 }}
+              style={{ width: 1000, height: 500 }}
               src={process.env.PUBLIC_URL + "./Images/two.jpeg"}
               alt="not found"
             ></img>

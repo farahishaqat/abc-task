@@ -7,7 +7,7 @@ function Navbar() {
     <div className="Navbar">
       <div className="leftSide">
         <div className="links">
-          <Link to={"/home"}> Home </Link>{" "}
+          <Link to={"/"}> Home </Link>{" "}
           <Link to={"/addcomplaints"}> Complaints </Link>
           <Link to={"/login"}> Login </Link>
           <Link to={"/signup"}> SignUp </Link>

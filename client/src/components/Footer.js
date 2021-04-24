@@ -33,7 +33,7 @@ const Footer = () => {
             </div>
 
             <div className="col.md.2 mx-auto mb-4">
-              <h6 className="text-uppercase font-weight-bold"> the provider</h6>
+              <h6 className="text-uppercase font-weight-bold">Lorem ipsum</h6>
 
               <hr
                 className="bg-light mb-4 mt-0 d-inline-block mx-auto"
@@ -50,7 +50,7 @@ const Footer = () => {
                   <a href="testattribute">Bootstrap</a>
                 </li>
                 <li className="my-2">
-                  <a href="testattribute">java</a>
+                  <a href="testattribute">Node</a>
                 </li>
               </ul>
             </div>
@@ -65,25 +65,25 @@ const Footer = () => {
                 <li>
                   {" "}
                   <a className="mu-2" href="testattribute">
-                    gfdg
+                    links
                   </a>
                 </li>
                 <li>
                   {" "}
                   <a className="mu-2" href="testattribute">
-                    gfdg
+                    links
                   </a>
                 </li>
                 <li>
                   {" "}
                   <a className="mu-2" href="testattribute">
-                    gfdg
+                    links
                   </a>
                 </li>
                 <li>
                   {" "}
                   <a className="mu-2" href="testattribute">
-                    gfdg
+                    links
                   </a>
                 </li>
               </ul>

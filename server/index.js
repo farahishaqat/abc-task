@@ -2,6 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 const app = express();
 
 const mysql = require("mysql");
@@ -24,10 +30,29 @@ db.query("select 1 + 1", (err, rows) => {
 //     res.send("hello farah")
 // })
 // });
-
-app.use(cors());
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
+
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  session({
+    key: "userId",
+    secret: "subscribe",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 60 * 60 * 24,
+    },
+  })
+);
 
 //post complaints to the database
 app.post("/api/insert", (req, res) => {
@@ -80,6 +105,70 @@ app.put("/api/update", (req, res) => {
     [complaintId, complaintDescription, user_Id, complaintStatus],
     (err, result) => {
       if (err) console.log(err);
+    }
+  );
+});
+
+//USERSSSS
+//post username and pass (register/Signup)
+app.post("/signup", (req, res) => {
+  const userName = req.body.userName;
+  const userPassword = req.body.userPassword;
+
+  bcrypt.hash(req.body.userPassword, saltRounds, (err, hash) => {
+    if (err) {
+      console.log(err);
+    }
+
+    db.query(
+      "INSERT INTO users(userName,userPassword) VALUES (?,?)",
+      [userName, hash],
+      (err, result) => {
+        console.log(err);
+      }
+    );
+  });
+});
+
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else {
+    res.send({ loggedIn: false });
+  }
+});
+
+//login check of the user exists
+
+app.post("/login", (req, res) => {
+  const userName = req.body.userName;
+  const userPassword = req.body.userPassword;
+
+  db.query(
+    "SELECT * FROM users WHERE username = ?;",
+    userName,
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      }
+
+      if (result.length > 0) {
+        bcrypt.compare(
+          userPassword,
+          result[0].userPassword,
+          (error, response) => {
+            if (response) {
+              req.session.user = result;
+              console.log(req.session.user);
+              res.send(result);
+            } else {
+              res.send({ message: "Wrong username/password combination!" });
+            }
+          }
+        );
+      } else {
+        res.send({ message: "User doesn't exist" });
+      }
     }
   );
 });
